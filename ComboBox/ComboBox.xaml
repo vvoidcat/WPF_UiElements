@@ -1,0 +1,63 @@
+﻿<UserControl x:Class="Elements.ComboBox"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+
+
+    <StackPanel>
+
+        <Button
+            Name="ControlButton"
+            Width="100" Height="20"
+            BorderThickness="0">
+
+            <Button.Content>
+                <TextBlock
+                    Name="TblockOpen"
+                    Text="&#709;"
+                    FontSize="15"
+                    Height="{Binding ElementName=ControlButton, Path=Height}"
+                    Width="{Binding ElementName=ControlButton, Path=Width}"
+                    TextAlignment="Right"
+                    Padding="0 0 5 0"
+                    Visibility="Visible"
+                    Canvas.ZIndex="1"/>
+            </Button.Content>
+        </Button>
+
+
+
+
+        <TextBlock
+            Name="TblockClose"
+            Text="&#708;"
+            FontSize="15"
+            Height="{Binding ElementName=ControlButton, Path=Height}"
+            Width="{Binding ElementName=ControlButton, Path=Width}"
+            TextAlignment="Right"
+            Padding="0 0 5 0"
+            Visibility="Hidden"
+            Canvas.ZIndex="1"/>
+
+        <Popup
+            Name="ComboboxPopup"
+            Placement="Bottom"
+            PlacementTarget="{Binding ElementName=ControlButton}"
+            IsOpen="True">
+
+            <ListBox 
+                Height="300"
+                Width="100"
+                BorderThickness="0">
+
+                <ListBoxItem Content="aa"/>
+                <ListBoxItem Content="aboba"/>
+                <ListBoxItem Content="aboba flex"/>
+            </ListBox>
+        </Popup>
+    </StackPanel>
+    
+</UserControl>
