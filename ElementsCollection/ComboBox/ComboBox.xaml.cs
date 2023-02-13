@@ -18,12 +18,19 @@ namespace Elements.ComboBox {
     /// Interaction logic for ComboBox.xaml
     /// </summary>
     public partial class ComboBox : UserControl {
-        public static readonly DependencyProperty controlCommandProperty =
-            DependencyProperty.Register("ControlCommand", typeof(ICommand), typeof(ComboBox), new UIPropertyMetadata(null));
-        public ICommand ControlCommand {
-            get { return (ICommand)GetValue(controlCommandProperty); }
-            set { SetValue(controlCommandProperty, value); }
-        }
+        //public static readonly DependencyProperty titleProperty =
+        //    DependencyProperty.Register("Title", typeof(string), typeof(SpinBox), new PropertyMetadata(String.Empty));
+        //public string Title {
+        //    get { return (string)GetValue(titleProperty); }
+        //    set { SetValue(titleProperty, value); }
+        //}
+
+        //public static readonly DependencyProperty controlCommandProperty =
+        //    DependencyProperty.Register("ControlCommand", typeof(ICommand), typeof(ComboBox), new UIPropertyMetadata(null));
+        //public ICommand ControlCommand {
+        //    get { return (ICommand)GetValue(controlCommandProperty); }
+        //    set { SetValue(controlCommandProperty, value); }
+        //}
 
         public ComboBox() {
             InitializeComponent();

@@ -3,9 +3,14 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:local="clr-namespace:Elements.ComboBox"
              x:Name="rootComboBox"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
+
+    <UserControl.DataContext>
+        <local:ViewModel/>
+    </UserControl.DataContext>
 
     <UserControl.Resources>
         <ResourceDictionary>
@@ -19,7 +24,7 @@
 
         <Button
             Name="ControlButton"
-            Command="{Binding ControlCommand, ElementName=rootComboBox}"
+            Command="{Binding controlCommand}"
             Width="100" Height="20"
             BorderThickness="0">
 
@@ -66,7 +71,7 @@
             Name="ComboboxPopup"
             Placement="Bottom"
             PlacementTarget="{Binding ElementName=ControlButton}"
-            IsOpen="False">
+            IsOpen="{Binding isPopupOpen}">
 
             <ListBox 
                 Height="300"
