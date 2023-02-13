@@ -1,0 +1,51 @@
+﻿<UserControl x:Class="Elements.SpinBox.SpinBox"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             x:Name="rootSpinBox"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="DictionarySpinBox.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </UserControl.Resources>
+
+    <StackPanel Orientation="Horizontal">
+        <TextBlock
+            Text="{Binding Title, ElementName=rootSpinBox}"
+            Margin="20 0 0 0"
+            Width="35"
+            FontSize="12"/>
+
+        <Button
+            Command="{Binding DecreaseCommand, ElementName=rootSpinBox}"
+            Content="&lt;"
+            Padding="0 -2 0 0"
+            Style="{StaticResource styleButtons}"
+            Height="18"
+            Width="18"/>
+
+        <TextBox
+            Text="{Binding BoxValue, ElementName=rootSpinBox}"
+            IsReadOnly="True"
+            FontSize="12"
+            HorizontalContentAlignment="Center"
+            VerticalContentAlignment="Top"
+            Style="{StaticResource styleTextBoxes}"
+            Height="18"
+            Width="30"/>
+
+        <Button 
+            Command="{Binding IncreaseCommand, ElementName=rootSpinBox}"
+            Content="&gt;"
+            Padding="0 -2 0 0"
+            Style="{StaticResource styleButtons}"
+            Height="18"
+            Width="18"/>
+    </StackPanel>
+</UserControl>

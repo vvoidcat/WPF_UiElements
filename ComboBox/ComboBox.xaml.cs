@@ -13,11 +13,18 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace Elements {
+namespace Elements.ComboBox {
     /// <summary>
     /// Interaction logic for ComboBox.xaml
     /// </summary>
     public partial class ComboBox : UserControl {
+        public static readonly DependencyProperty controlCommandProperty =
+            DependencyProperty.Register("ControlCommand", typeof(ICommand), typeof(ComboBox), new UIPropertyMetadata(null));
+        public ICommand ControlCommand {
+            get { return (ICommand)GetValue(controlCommandProperty); }
+            set { SetValue(controlCommandProperty, value); }
+        }
+
         public ComboBox() {
             InitializeComponent();
         }
