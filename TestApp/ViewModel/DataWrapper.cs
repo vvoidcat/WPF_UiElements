@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Elements.Common {
+namespace Elements.TestApp {
     public class DataWrapper<T> : ObservableObject {
         private T _val;
         public T val {

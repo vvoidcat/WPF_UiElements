@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
 
-namespace Elements.Common {
+namespace Elements.TestApp {
     public class RelayCommand<T> : ICommand {
         private Action<T> exec;
         public event EventHandler? CanExecuteChanged;
