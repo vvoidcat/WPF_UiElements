@@ -11,7 +11,7 @@
     <UserControl.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
-                <ResourceDictionary Source="DictionaryComboBox.xaml"/>
+                <ResourceDictionary Source="DictionaryStyles_ComboBox.xaml"/>
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </UserControl.Resources>
@@ -33,7 +33,7 @@
 
                     <TextBlock
                         Name="ControlButtonHeader"
-                        Text="header"
+                        Text="{Binding ElementName=ContentList, Path=SelectedItem.Content}"
                         TextAlignment="Center"
                         Grid.Column="0"/>
 
@@ -70,14 +70,15 @@
             IsOpen="{Binding ElementName=ControlButton, Path=IsChecked}"
             StaysOpen="{Binding ElementName=ControlButton, Path=IsMouseOver}">
 
-            <ListBox 
+            <ListBox
+                Name="ContentList"
                 Height="300"
                 Width="100"
                 BorderThickness="0">
 
-                <ListBoxItem Content="aa"/>
-                <ListBoxItem Content="aboba"/>
-                <ListBoxItem Content="aboba flex"/>
+                <ListBoxItem Content="aa" IsSelected="True" PreviewMouseDown="ListBoxItem_PreviewMouseDown"/>
+                <ListBoxItem Content="aboba" PreviewMouseDown="ListBoxItem_PreviewMouseDown"/>
+                <ListBoxItem Content="aboba flex" PreviewMouseDown="ListBoxItem_PreviewMouseDown"/>
             </ListBox>
         </Popup>
     </StackPanel>

@@ -19,22 +19,27 @@ namespace Elements.ComboBox {
     /// Interaction logic for ComboBox.xaml
     /// </summary>
     public partial class ComboBox : UserControl {
-        //public static readonly DependencyProperty titleProperty =
-        //    DependencyProperty.Register("Title", typeof(string), typeof(SpinBox), new PropertyMetadata(String.Empty));
-        //public string Title {
-        //    get { return (string)GetValue(titleProperty); }
-        //    set { SetValue(titleProperty, value); }
-        //}
-
-        //public static readonly DependencyProperty controlCommandProperty =
-        //    DependencyProperty.Register("ControlCommand", typeof(ICommand), typeof(ComboBox), new UIPropertyMetadata(null));
-        //public ICommand ControlCommand {
-        //    get { return (ICommand)GetValue(controlCommandProperty); }
-        //    set { SetValue(controlCommandProperty, value); }
+        //public static readonly DependencyProperty finalizeSelectionCommandProperty =
+        //    DependencyProperty.Register("FinalizeSelectionCommand", typeof(ICommand), typeof(ComboBox), new UIPropertyMetadata(null));
+        //public ICommand FinalizeSelectionCommand {
+        //    get { return (ICommand)GetValue(finalizeSelectionCommandProperty); }
+        //    set { SetValue(finalizeSelectionCommandProperty, value); }
         //}
 
         public ComboBox() {
             InitializeComponent();
+        }
+
+        private void ListBoxItem_PreviewMouseDown(object sender, MouseButtonEventArgs e) {
+            if (sender as ListBoxItem is not null) {
+                if (sender != ContentList.SelectedItem) {
+                    ListBoxItem item = (ListBoxItem)sender;
+                    ContentList.SelectedItem = item;
+                    item.IsSelected = true;
+                }
+                
+                ComboboxPopup.IsOpen = false;
+            }
         }
     }
 }
