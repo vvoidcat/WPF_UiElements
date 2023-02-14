@@ -8,10 +8,6 @@
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
 
-    <UserControl.DataContext>
-        <local:ViewModel/>
-    </UserControl.DataContext>
-
     <UserControl.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
@@ -20,15 +16,15 @@
         </ResourceDictionary>
     </UserControl.Resources>
 
-    <StackPanel>
+    <StackPanel Name="stackPanel">
 
-        <Button
+        <ToggleButton
             Name="ControlButton"
-            Command="{Binding controlCommand}"
+            IsChecked="False"
             Width="100" Height="20"
             BorderThickness="0">
 
-            <Button.Content>
+            <ToggleButton.Content>
                 <Grid>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Name="ColumnHeader" Width="80"/>
@@ -45,7 +41,7 @@
                         Name="ArrowDown"
                         Text="&#709;"
                         FontSize="15"
-                        Height="{Binding ElementName=ColumnArrow, Path=Height}"
+                        Height="{Binding ElementName=ColumnArrow, Path=Width}"
                         Width="{Binding ElementName=ColumnArrow, Path=Width}"
                         TextAlignment="Center"
                         Padding="0 0 5 0"
@@ -56,22 +52,23 @@
                         Name="ArrowUp"
                         Text="&#708;"
                         FontSize="15"
-                        Height="{Binding ElementName=ColumnArrow, Path=Height}"
+                        Height="{Binding ElementName=ColumnArrow, Path=Width}"
                         Width="{Binding ElementName=ColumnArrow, Path=Width}"
                         TextAlignment="Center"
                         Padding="0 0 5 0"
                         Visibility="Hidden"
                         Grid.Column="1"/>
                 </Grid>
-            </Button.Content>
-        </Button>
+            </ToggleButton.Content>
+        </ToggleButton>
 
         
         <Popup
             Name="ComboboxPopup"
             Placement="Bottom"
             PlacementTarget="{Binding ElementName=ControlButton}"
-            IsOpen="{Binding isPopupOpen}">
+            IsOpen="{Binding ElementName=ControlButton, Path=IsChecked}"
+            StaysOpen="{Binding ElementName=ControlButton, Path=IsMouseOver}">
 
             <ListBox 
                 Height="300"
