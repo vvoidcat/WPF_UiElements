@@ -21,48 +21,49 @@
         <ToggleButton
             Name="ControlButton"
             IsChecked="False"
-            Width="100" Height="20"
+            Checked="ControlButton_CheckedUnchecked"
+            Unchecked="ControlButton_CheckedUnchecked"
+            Width="{Binding ElementName=rootComboBox, Path=BoxWidth}"
+            Height="{Binding ElementName=rootComboBox, Path=ButtonHeight}"
             BorderThickness="0">
 
             <ToggleButton.Content>
                 <Grid>
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition Name="ColumnHeader" Width="80"/>
-                        <ColumnDefinition Name="ColumnArrow" Width="20"/>
+                        <ColumnDefinition Name="ColumnHeader" Width="*"/>
+                        <ColumnDefinition Name="ColumnArrow" Width="{Binding ElementName=rootComboBox, Path=ButtonHeight}"/>
                     </Grid.ColumnDefinitions>
 
                     <TextBlock
                         Name="ControlButtonHeader"
                         Text="{Binding ElementName=ContentList, Path=SelectedItem.Content}"
+                        Width="80"
                         TextAlignment="Center"
                         Grid.Column="0"/>
 
                     <TextBlock
                         Name="ArrowDown"
                         Text="&#709;"
-                        FontSize="15"
+                        FontSize="12"
                         Height="{Binding ElementName=ColumnArrow, Path=Width}"
                         Width="{Binding ElementName=ColumnArrow, Path=Width}"
                         TextAlignment="Center"
-                        Padding="0 0 5 0"
                         Visibility="Visible"
                         Grid.Column="1"/>
 
                     <TextBlock
                         Name="ArrowUp"
                         Text="&#708;"
-                        FontSize="15"
+                        FontSize="12"
                         Height="{Binding ElementName=ColumnArrow, Path=Width}"
                         Width="{Binding ElementName=ColumnArrow, Path=Width}"
                         TextAlignment="Center"
-                        Padding="0 0 5 0"
                         Visibility="Hidden"
                         Grid.Column="1"/>
                 </Grid>
             </ToggleButton.Content>
         </ToggleButton>
 
-        
         <Popup
             Name="ComboboxPopup"
             Placement="Bottom"
@@ -70,16 +71,21 @@
             IsOpen="{Binding ElementName=ControlButton, Path=IsChecked}"
             StaysOpen="{Binding ElementName=ControlButton, Path=IsMouseOver}">
 
-            <ListBox
+            <ScrollViewer
+                Width="{Binding ElementName=rootComboBox, Path=BoxWidth}"
+                Height="{Binding ElementName=ContentList, Path=Height}"
+                VerticalScrollBarVisibility="Hidden">
+                
+                <ListBox
                 Name="ContentList"
                 Height="300"
-                Width="100"
                 BorderThickness="0">
 
-                <ListBoxItem Content="aa" IsSelected="True" PreviewMouseDown="ListBoxItem_PreviewMouseDown"/>
-                <ListBoxItem Content="aboba" PreviewMouseDown="ListBoxItem_PreviewMouseDown"/>
-                <ListBoxItem Content="aboba flex" PreviewMouseDown="ListBoxItem_PreviewMouseDown"/>
-            </ListBox>
+                    <ListBoxItem Content="aa" IsSelected="True" PreviewMouseDown="ListBoxItem_PreviewMouseDown"/>
+                    <ListBoxItem Content="aboba" PreviewMouseDown="ListBoxItem_PreviewMouseDown"/>
+                    <ListBoxItem Content="aboba flex" PreviewMouseDown="ListBoxItem_PreviewMouseDown"/>
+                </ListBox>
+            </ScrollViewer>
         </Popup>
     </StackPanel>
     

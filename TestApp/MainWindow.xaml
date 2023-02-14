@@ -19,7 +19,7 @@
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
         
-        <cbox:ComboBox Grid.Column="0"/>
+        <cbox:ComboBox Grid.Column="0" BoxWidth="100"/>
     </Grid>
     
 </Window>

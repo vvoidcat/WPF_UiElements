@@ -26,6 +26,20 @@ namespace Elements.ComboBox {
         //    set { SetValue(finalizeSelectionCommandProperty, value); }
         //}
 
+        public static readonly DependencyProperty BoxWidthProperty =
+            DependencyProperty.Register("BoxWidth", typeof(int), typeof(ComboBox), new PropertyMetadata(100));
+        public int BoxWidth {
+            get { return (int)GetValue(BoxWidthProperty); }
+            set { SetValue(BoxWidthProperty, value); }
+        }
+
+        public static readonly DependencyProperty ButtonHeightProperty =
+            DependencyProperty.Register("ButtonHeight", typeof(int), typeof(ComboBox), new PropertyMetadata(20));
+        public int ButtonHeight {
+            get { return (int)GetValue(ButtonHeightProperty); }
+            set { SetValue(ButtonHeightProperty, value); }
+        }
+
         public ComboBox() {
             InitializeComponent();
         }
@@ -39,6 +53,16 @@ namespace Elements.ComboBox {
                 }
                 
                 ComboboxPopup.IsOpen = false;
+            }
+        }
+
+        private void ControlButton_CheckedUnchecked(object sender, RoutedEventArgs e) {
+            if (ControlButton.IsChecked == true) {
+                ArrowDown.Visibility = Visibility.Collapsed;
+                ArrowUp.Visibility = Visibility.Visible;
+            } else {
+                ArrowDown.Visibility = Visibility.Visible;
+                ArrowUp.Visibility = Visibility.Collapsed;
             }
         }
     }
