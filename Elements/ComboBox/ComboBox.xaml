@@ -37,7 +37,7 @@
                     <TextBlock
                         Name="ControlButtonHeader"
                         Text="{Binding ElementName=ContentList, Path=SelectedItem.Content}"
-                        Width="80"
+                        Height="{Binding ElementName=ColumnArrow, Path=Width}"
                         TextAlignment="Center"
                         Grid.Column="0"/>
 

@@ -19,10 +19,6 @@ namespace Elements.ComboBox {
     /// Interaction logic for ComboBox.xaml
     /// </summary>
     public partial class ComboBox : UserControl {
-        public ComboBox() {
-            InitializeComponent();
-        }
-
 
         // DEPENDENCY PROPERTIES
 
@@ -69,17 +65,20 @@ namespace Elements.ComboBox {
         }
 
 
+        // CONSTRUCTOR
+
+        public ComboBox() {
+            Loaded += ControlButton_OnLoaded;
+
+            InitializeComponent();
+        }
+
+
         // EVENTS
 
-        private void ListBoxItem_PreviewMouseDown(object sender, MouseButtonEventArgs e) {
-            if (sender as ListBoxItem is not null) {
-                if (sender != ContentList.SelectedItem) {
-                    ListBoxItem item = (ListBoxItem)sender;
-                    ContentList.SelectedItem = item;
-                    item.IsSelected = true;
-                }
-                ComboboxPopup.IsOpen = false;
-            }
+        private void ControlButton_OnLoaded(object sender, EventArgs e) {
+            ControlButtonHeader.Width = BoxWidth - ButtonHeight;
+            Loaded -= ControlButton_OnLoaded;
         }
 
         private void ControlButton_CheckedUnchecked(object sender, RoutedEventArgs e) {
@@ -97,6 +96,17 @@ namespace Elements.ComboBox {
                 PopupHeight = ItemHeight * ContentList.Items.Count;
             } else {
                 PopupHeight = ButtonHeight;
+            }
+        }
+
+        private void ListBoxItem_PreviewMouseDown(object sender, MouseButtonEventArgs e) {
+            if (sender as ListBoxItem is not null) {
+                if (sender != ContentList.SelectedItem) {
+                    ListBoxItem item = (ListBoxItem)sender;
+                    ContentList.SelectedItem = item;
+                    item.IsSelected = true;
+                }
+                ComboboxPopup.IsOpen = false;
             }
         }
     }
