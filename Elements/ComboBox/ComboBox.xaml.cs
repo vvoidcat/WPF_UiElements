@@ -19,6 +19,13 @@ namespace Elements.ComboBox {
     /// Interaction logic for ComboBox.xaml
     /// </summary>
     public partial class ComboBox : UserControl {
+        public ComboBox() {
+            InitializeComponent();
+        }
+
+
+        // DEPENDENCY PROPERTIES
+
         //public static readonly DependencyProperty finalizeSelectionCommandProperty =
         //    DependencyProperty.Register("FinalizeSelectionCommand", typeof(ICommand), typeof(ComboBox), new UIPropertyMetadata(null));
         //public ICommand FinalizeSelectionCommand {
@@ -40,9 +47,29 @@ namespace Elements.ComboBox {
             set { SetValue(ButtonHeightProperty, value); }
         }
 
-        public ComboBox() {
-            InitializeComponent();
+        public static readonly DependencyProperty ItemHeightProperty =
+            DependencyProperty.Register("ItemHeight", typeof(int), typeof(ComboBox), new PropertyMetadata(20));
+        public int ItemHeight {
+            get { return (int)GetValue(ItemHeightProperty); }
+            set { SetValue(ItemHeightProperty, value); }
         }
+
+        public static readonly DependencyProperty PopupHeightProperty =
+            DependencyProperty.Register("PopupHeight", typeof(int), typeof(ComboBox), new PropertyMetadata(20));
+        public int PopupHeight {
+            get { return (int)GetValue(PopupHeightProperty); }
+            set { SetValue(PopupHeightProperty, value); }
+        }
+
+        public static readonly DependencyProperty PopupMaxHeightProperty =
+            DependencyProperty.Register("PopupMaxHeight", typeof(int), typeof(ComboBox), new PropertyMetadata(100));
+        public int PopupMaxHeight {
+            get { return (int)GetValue(PopupMaxHeightProperty); }
+            set { SetValue(PopupMaxHeightProperty, value); }
+        }
+
+
+        // EVENTS
 
         private void ListBoxItem_PreviewMouseDown(object sender, MouseButtonEventArgs e) {
             if (sender as ListBoxItem is not null) {
@@ -51,7 +78,6 @@ namespace Elements.ComboBox {
                     ContentList.SelectedItem = item;
                     item.IsSelected = true;
                 }
-                
                 ComboboxPopup.IsOpen = false;
             }
         }
@@ -63,6 +89,14 @@ namespace Elements.ComboBox {
             } else {
                 ArrowDown.Visibility = Visibility.Visible;
                 ArrowUp.Visibility = Visibility.Collapsed;
+            }
+        }
+
+        private void ContentList_SizeChanged(object sender, SizeChangedEventArgs e) {
+            if (ContentList.Items.Count > 0) {
+                PopupHeight = ItemHeight * ContentList.Items.Count;
+            } else {
+                PopupHeight = ButtonHeight;
             }
         }
     }

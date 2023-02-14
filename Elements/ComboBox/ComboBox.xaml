@@ -71,21 +71,19 @@
             IsOpen="{Binding ElementName=ControlButton, Path=IsChecked}"
             StaysOpen="{Binding ElementName=ControlButton, Path=IsMouseOver}">
 
-            <ScrollViewer
-                Width="{Binding ElementName=rootComboBox, Path=BoxWidth}"
-                Height="{Binding ElementName=ContentList, Path=Height}"
-                VerticalScrollBarVisibility="Hidden">
-                
-                <ListBox
+            <ListBox
                 Name="ContentList"
-                Height="300"
-                BorderThickness="0">
+                Width="{Binding ElementName=rootComboBox, Path=BoxWidth}"
+                Height="{Binding ElementName=rootComboBox, Path=PopupHeight}"
+                MaxHeight="{Binding ElementName=rootComboBox, Path=PopupMaxHeight}"
+                SizeChanged="ContentList_SizeChanged"
+                BorderThickness="0"
+                ScrollViewer.VerticalScrollBarVisibility="Hidden">
 
-                    <ListBoxItem Content="aa" IsSelected="True" PreviewMouseDown="ListBoxItem_PreviewMouseDown"/>
-                    <ListBoxItem Content="aboba" PreviewMouseDown="ListBoxItem_PreviewMouseDown"/>
-                    <ListBoxItem Content="aboba flex" PreviewMouseDown="ListBoxItem_PreviewMouseDown"/>
-                </ListBox>
-            </ScrollViewer>
+                <ListBoxItem Content="aa" IsSelected="True" PreviewMouseDown="ListBoxItem_PreviewMouseDown"/>
+                <ListBoxItem Content="aboba" PreviewMouseDown="ListBoxItem_PreviewMouseDown"/>
+                <ListBoxItem Content="aboba flex" PreviewMouseDown="ListBoxItem_PreviewMouseDown"/>
+            </ListBox>
         </Popup>
     </StackPanel>
     
