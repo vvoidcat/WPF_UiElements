@@ -19,16 +19,6 @@ namespace Elements.ComboBox {
     /// Interaction logic for ComboBox.xaml
     /// </summary>
     public partial class ComboBox : UserControl {
-
-        // DEPENDENCY PROPERTIES
-
-        //public static readonly DependencyProperty finalizeSelectionCommandProperty =
-        //    DependencyProperty.Register("FinalizeSelectionCommand", typeof(ICommand), typeof(ComboBox), new UIPropertyMetadata(null));
-        //public ICommand FinalizeSelectionCommand {
-        //    get { return (ICommand)GetValue(finalizeSelectionCommandProperty); }
-        //    set { SetValue(finalizeSelectionCommandProperty, value); }
-        //}
-
         public static readonly DependencyProperty BoxWidthProperty =
             DependencyProperty.Register("BoxWidth", typeof(int), typeof(ComboBox), new PropertyMetadata(100));
         public int BoxWidth {
@@ -93,7 +83,7 @@ namespace Elements.ComboBox {
 
         private void ContentList_SizeChanged(object sender, SizeChangedEventArgs e) {
             if (ContentList.Items.Count > 0) {
-                PopupHeight = ItemHeight * ContentList.Items.Count;
+                PopupHeight = ItemHeight * ContentList.Items.Count + 2;
             } else {
                 PopupHeight = ButtonHeight;
             }

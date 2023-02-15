@@ -80,8 +80,7 @@
                 BorderThickness="0"
                 ScrollViewer.VerticalScrollBarVisibility="Hidden">
 
-                <ListBoxItem Content="aa" IsSelected="True" PreviewMouseDown="ListBoxItem_PreviewMouseDown"/>
-                <ListBoxItem Content="aboba" PreviewMouseDown="ListBoxItem_PreviewMouseDown"/>
+                <ListBoxItem Content="aboba" IsSelected="true" PreviewMouseDown="ListBoxItem_PreviewMouseDown"/>
                 <ListBoxItem Content="aboba flex" PreviewMouseDown="ListBoxItem_PreviewMouseDown"/>
             </ListBox>
         </Popup>
