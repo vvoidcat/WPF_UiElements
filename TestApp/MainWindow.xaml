@@ -6,20 +6,20 @@
         xmlns:local="clr-namespace:Elements.TestApp"
         xmlns:cbox="clr-namespace:Elements.ComboBox"
         xmlns:sbox="clr-namespace:Elements.SpinBox"
+        Name="window"
         mc:Ignorable="d"
         Title="testapp" Height="450" Width="800"  Background="DimGray">
 
     <Window.DataContext>
         <local:ViewModel/>
     </Window.DataContext>
-    
+
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"/>
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
-        
-        <cbox:ComboBox Grid.Column="0" BoxWidth="100"/>
+
+        <cbox:ComboBox Grid.Column="0" BoxWidth="100" Items="{Binding letters2}"/>
     </Grid>
-    
 </Window>

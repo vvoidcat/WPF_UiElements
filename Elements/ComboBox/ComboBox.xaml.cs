@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Diagnostics;
 using System.Linq;
 using System.Text;
@@ -52,6 +53,13 @@ namespace Elements.ComboBox {
         public int PopupMaxHeight {
             get { return (int)GetValue(PopupMaxHeightProperty); }
             set { SetValue(PopupMaxHeightProperty, value); }
+        }
+
+        public static readonly DependencyProperty ItemsCollectionProperty =
+            DependencyProperty.Register("Items", typeof(IEnumerable<string>), typeof(ComboBox), new PropertyMetadata(null));
+        public IEnumerable<string> Items {
+            get { return (IEnumerable<string>)GetValue(ItemsCollectionProperty); }
+            set { SetValue(ItemsCollectionProperty, value); }
         }
 
 
