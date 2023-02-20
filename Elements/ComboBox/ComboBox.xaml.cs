@@ -116,30 +116,14 @@ namespace Elements.ComboBox {
         }
 
         private void ListBoxItem_PreviewMouseDown(object sender, MouseButtonEventArgs e) {
-            //Debug.WriteLine("aboba happened");
+            if (sender as StackPanel is not null && ContentList.SelectedItem is not null) {
+                StackPanel item = (StackPanel)sender;
+                TextBlock child = (TextBlock)item.Children[0];
 
-            //if (sender is ListBoxItem) {
-            //    Debug.WriteLine("aboba item");
-            //} else {
-            //    Debug.WriteLine("aboba wtf " + sender.GetType().Name + " | " + ContentList.SelectedItem.GetType().Name);
-            //}
+                if (child is not null && child.Text == ContentList.SelectedItem.ToString()) {
+                    ComboboxPopup.IsOpen = false;
 
-            if (sender as StackPanel is not null) {
-                //if (ContentList.SelectedItem is not null) {
-                //    Debug.WriteLine("aboba wtf " + sender.GetType().Name + " | " + ContentList.SelectedItem.GetType().Name + " " + ContentList.SelectedItem);
-
-                //}
-
-
-
-                //if (sender == ContentList.SelectedItem) {
-                //    ComboboxPopup.IsOpen = false;
-
-                //    //StackPanel item = (StackPanel)sender;
-                //    //ContentList.SelectedItem = item;
-
-                //    //item.IsSelected = true;
-                //}
+                }
             }
         }
 
