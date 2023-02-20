@@ -35,7 +35,7 @@ namespace Elements.ComboBox {
         }
 
         public static readonly DependencyProperty ItemHeightProperty =
-            DependencyProperty.Register("ItemHeight", typeof(int), typeof(ComboBox), new PropertyMetadata(20));
+            DependencyProperty.Register("ItemHeight", typeof(int), typeof(ComboBox), new PropertyMetadata(15));
         public int ItemHeight {
             get { return (int)GetValue(ItemHeightProperty); }
             set { SetValue(ItemHeightProperty, value); }
@@ -67,8 +67,17 @@ namespace Elements.ComboBox {
 
         public ComboBox() {
             Loaded += ControlButton_OnLoaded;
+            Loaded += ContentList_OnLoaded;
 
             InitializeComponent();
+            Init();
+        }
+
+        private void Init() {
+            //if (ContentList.Items.Count > 0) {
+            //    ContentList.SelectedItem = Items.First();
+            //    ControlButtonHeader.Text = Items.First();
+            //}
         }
 
 
@@ -89,6 +98,15 @@ namespace Elements.ComboBox {
             }
         }
 
+        private void ContentList_OnLoaded(object sender, EventArgs e) {
+            //if (ContentList.Items.Count > 0) {
+            //    ContentList.SelectedItem = Items.First();
+            //    ControlButtonHeader.Text = Items.First();
+            //}
+
+            Loaded -= ContentList_OnLoaded;
+        }
+
         private void ContentList_SizeChanged(object sender, SizeChangedEventArgs e) {
             if (ContentList.Items.Count > 0) {
                 PopupHeight = ItemHeight * ContentList.Items.Count + 2;
@@ -98,14 +116,35 @@ namespace Elements.ComboBox {
         }
 
         private void ListBoxItem_PreviewMouseDown(object sender, MouseButtonEventArgs e) {
-            if (sender as ListBoxItem is not null) {
-                if (sender != ContentList.SelectedItem) {
-                    ListBoxItem item = (ListBoxItem)sender;
-                    ContentList.SelectedItem = item;
-                    item.IsSelected = true;
-                }
-                ComboboxPopup.IsOpen = false;
+            //Debug.WriteLine("aboba happened");
+
+            //if (sender is ListBoxItem) {
+            //    Debug.WriteLine("aboba item");
+            //} else {
+            //    Debug.WriteLine("aboba wtf " + sender.GetType().Name + " | " + ContentList.SelectedItem.GetType().Name);
+            //}
+
+            if (sender as StackPanel is not null) {
+                //if (ContentList.SelectedItem is not null) {
+                //    Debug.WriteLine("aboba wtf " + sender.GetType().Name + " | " + ContentList.SelectedItem.GetType().Name + " " + ContentList.SelectedItem);
+
+                //}
+
+
+
+                //if (sender == ContentList.SelectedItem) {
+                //    ComboboxPopup.IsOpen = false;
+
+                //    //StackPanel item = (StackPanel)sender;
+                //    //ContentList.SelectedItem = item;
+
+                //    //item.IsSelected = true;
+                //}
             }
+        }
+
+        private void ContentList_SelectionChanged(object sender, SelectionChangedEventArgs e) {
+            ComboboxPopup.IsOpen = false;
         }
     }
 }
