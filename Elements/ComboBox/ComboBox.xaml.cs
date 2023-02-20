@@ -67,17 +67,7 @@ namespace Elements.ComboBox {
 
         public ComboBox() {
             Loaded += ControlButton_OnLoaded;
-            Loaded += ContentList_OnLoaded;
-
             InitializeComponent();
-            Init();
-        }
-
-        private void Init() {
-            //if (ContentList.Items.Count > 0) {
-            //    ContentList.SelectedItem = Items.First();
-            //    ControlButtonHeader.Text = Items.First();
-            //}
         }
 
 
@@ -85,6 +75,10 @@ namespace Elements.ComboBox {
 
         private void ControlButton_OnLoaded(object sender, EventArgs e) {
             ControlButtonHeader.Width = BoxWidth - ButtonHeight;
+
+            if (ContentList is not null && ContentList.Items.Count > 0) {
+                ContentList.SelectedItem = Items.First();
+            }
             Loaded -= ControlButton_OnLoaded;
         }
 
@@ -96,15 +90,6 @@ namespace Elements.ComboBox {
                 ArrowDown.Visibility = Visibility.Visible;
                 ArrowUp.Visibility = Visibility.Collapsed;
             }
-        }
-
-        private void ContentList_OnLoaded(object sender, EventArgs e) {
-            //if (ContentList.Items.Count > 0) {
-            //    ContentList.SelectedItem = Items.First();
-            //    ControlButtonHeader.Text = Items.First();
-            //}
-
-            Loaded -= ContentList_OnLoaded;
         }
 
         private void ContentList_SizeChanged(object sender, SizeChangedEventArgs e) {

@@ -89,16 +89,10 @@
                             Width="{Binding ElementName=rootComboBox, Path=BoxWidth}"
                             Height="{Binding ElementName=rootComboBox, Path=ItemHeight}"
                             PreviewMouseDown="ListBoxItem_PreviewMouseDown">
-
                             <TextBlock Text="{Binding}"/>
                         </StackPanel>
                     </DataTemplate>
                 </ListBox.ItemTemplate>
-
-                <!--
-                <ListBoxItem Content="aboba" IsSelected="true" PreviewMouseDown="ListBoxItem_PreviewMouseDown"/>
-                <ListBoxItem Content="aboba flex" PreviewMouseDown="ListBoxItem_PreviewMouseDown"/>                
-                -->
             </ListBox>
         </Popup>
     </StackPanel>
