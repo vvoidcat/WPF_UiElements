@@ -15,11 +15,15 @@
         </ResourceDictionary>
     </UserControl.Resources>
 
-    <StackPanel Orientation="Horizontal">
+    <StackPanel
+        Orientation="Horizontal"
+        Height="{Binding BoxHeight, ElementName=rootSpinBox}"
+        Width="{Binding BoxWidth, ElementName=rootSpinBox}">
+        
         <TextBlock
             Text="{Binding Title, ElementName=rootSpinBox}"
-            Margin="20 0 0 0"
-            Width="35"
+            Width="{Binding TitleWidth, ElementName=rootSpinBox}"
+            Height="{Binding BoxHeight, ElementName=rootSpinBox}"
             FontSize="12"/>
 
         <Button

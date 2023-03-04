@@ -25,6 +25,27 @@ namespace Elements.SpinBox {
             set { SetValue(titleProperty, value); }
         }
 
+        public static readonly DependencyProperty TitleWidthProperty =
+            DependencyProperty.Register("TitleWidth", typeof(int), typeof(SpinBox), new PropertyMetadata(100));
+        public int TitleWidth {
+            get { return (int)GetValue(TitleWidthProperty); }
+            set { SetValue(TitleWidthProperty, value); }
+        }
+
+        public static readonly DependencyProperty BoxWidthProperty =
+            DependencyProperty.Register("BoxWidth", typeof(int), typeof(SpinBox), new PropertyMetadata(100));
+        public int BoxWidth {
+            get { return (int)GetValue(BoxWidthProperty); }
+            set { SetValue(BoxWidthProperty, value); }
+        }
+
+        public static readonly DependencyProperty BoxHeightProperty =
+            DependencyProperty.Register("BoxHeight", typeof(int), typeof(SpinBox), new PropertyMetadata(20));
+        public int BoxHeight {
+            get { return (int)GetValue(BoxHeightProperty); }
+            set { SetValue(BoxHeightProperty, value); }
+        }
+
         public static readonly DependencyProperty boxValueProperty =
             DependencyProperty.Register("BoxValue", typeof(string), typeof(SpinBox), new PropertyMetadata(String.Empty));
         public string BoxValue {

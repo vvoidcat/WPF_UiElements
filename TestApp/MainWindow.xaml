@@ -26,5 +26,16 @@
             ButtonHeight="20"
             Items="{Binding letters}"
             ItemsSelectedIndex="{Binding selectedLetterIndex, Mode=OneWayToSource}"/>
+
+        <sbox:SpinBox
+            VerticalAlignment="Top"
+            Grid.Column="1"
+            Title="value:"
+            TitleWidth="50"
+            BoxWidth="200"
+            BoxHeight="20"
+            BoxValue="{Binding sboxValue}"
+            DecreaseCommand="{Binding sboxDecreaseCommand}"
+            IncreaseCommand="{Binding sboxIncreaseCommand}"/>
     </Grid>
 </Window>
