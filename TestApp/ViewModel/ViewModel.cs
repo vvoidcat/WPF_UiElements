@@ -7,23 +7,23 @@ using System.Threading.Tasks;
 
 namespace Elements.TestApp {
     class ViewModel : ObservableObject {
-        public ObservableCollection<DataWrapper<string>> letters1 { get; set; } = new ObservableCollection<DataWrapper<string>>() {
-            new DataWrapper<string>("a"),
-            new DataWrapper<string>("b"),
-            new DataWrapper<string>("c"),
-            new DataWrapper<string>("d"),
-            new DataWrapper<string>("e")
-        };
 
-        public ObservableCollection<string> letters2 { get; set; } = new ObservableCollection<string>() {
+        public ObservableCollection<string> letters { get; set; } = new ObservableCollection<string>() {
             "a", "b", "c", "d", "e"
         };
 
+        private int _selectedLetterIndex = 0;
+        public int selectedLetterIndex {
+            get { return _selectedLetterIndex; }
+            set { 
+                if (value != _selectedLetterIndex) {
+                    OnPropertyChanged(nameof(selectedLetterIndex));
+                }
+            }
+        }
+
         public ViewModel() {
             //
-
-            letters1.Add(new DataWrapper<string>("abobs"));
-            letters2.Add("abobus");
         }
     }
 }

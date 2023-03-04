@@ -62,6 +62,13 @@ namespace Elements.ComboBox {
             set { SetValue(ItemsCollectionProperty, value); }
         }
 
+        public static readonly DependencyProperty ItemsSelectedIndexProperty =
+            DependencyProperty.Register("ItemsSelectedIndex", typeof(int), typeof(ComboBox), new PropertyMetadata(0));
+        public int ItemsSelectedIndex {
+            get { return (int)GetValue(ItemsSelectedIndexProperty); }
+            set { SetValue(ItemsSelectedIndexProperty, value); }
+        }
+
 
         // CONSTRUCTOR
 
@@ -94,7 +101,8 @@ namespace Elements.ComboBox {
 
         private void ContentList_SizeChanged(object sender, SizeChangedEventArgs e) {
             if (ContentList.Items.Count > 0) {
-                PopupHeight = ItemHeight * ContentList.Items.Count + 2;
+                PopupHeight = ItemHeight * ContentList.Items.Count + ItemHeight;
+                PopupMaxHeight = ItemHeight * 4;
             } else {
                 PopupHeight = ButtonHeight;
             }
@@ -113,6 +121,7 @@ namespace Elements.ComboBox {
         }
 
         private void ContentList_SelectionChanged(object sender, SelectionChangedEventArgs e) {
+            ItemsSelectedIndex = ContentList.SelectedIndex;
             ComboboxPopup.IsOpen = false;
         }
     }

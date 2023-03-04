@@ -14,12 +14,17 @@
         <local:ViewModel/>
     </Window.DataContext>
 
-    <Grid>
+    <Grid Margin="10 10 10 10">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"/>
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
 
-        <cbox:ComboBox Grid.Column="0" BoxWidth="100" Items="{Binding letters2}"/>
+        <cbox:ComboBox
+            Grid.Column="0"
+            BoxWidth="100"
+            ButtonHeight="20"
+            Items="{Binding letters}"
+            ItemsSelectedIndex="{Binding selectedLetterIndex, Mode=OneWayToSource}"/>
     </Grid>
 </Window>
