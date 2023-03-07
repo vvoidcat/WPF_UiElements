@@ -39,6 +39,7 @@
             <TextBlock
                 Name="textContent"
                 Text="{Binding ElementName=rootStringSpinbox, Path=BoxValue}"
+                Style="{StaticResource styleTextBlock}"
                 HorizontalAlignment="Center"
                 VerticalAlignment="Center"/>
         </Grid>
