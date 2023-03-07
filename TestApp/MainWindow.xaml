@@ -5,7 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Elements.TestApp"
         xmlns:cbox="clr-namespace:Elements.ComboBox"
-        xmlns:sbox="clr-namespace:Elements.SpinBox"
+        xmlns:sbox_int="clr-namespace:Elements.IntSpinBox"
+        xmlns:sbox_string="clr-namespace:Elements.StringSpinBox"
         Name="window"
         mc:Ignorable="d"
         Title="testapp" Height="450" Width="800"  Background="DimGray">
@@ -18,6 +19,7 @@
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"/>
             <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
 
         <cbox:ComboBox
@@ -27,15 +29,18 @@
             Items="{Binding letters}"
             ItemsSelectedIndex="{Binding selectedLetterIndex, Mode=OneWayToSource}"/>
 
-        <sbox:SpinBox
+        <sbox_int:IntSpinBox
             VerticalAlignment="Top"
             Grid.Column="1"
             Title="value:"
             TitleWidth="50"
             BoxWidth="200"
             BoxHeight="20"
-            BoxValue="{Binding sboxValue}"
-            DecreaseCommand="{Binding sboxDecreaseCommand}"
-            IncreaseCommand="{Binding sboxIncreaseCommand}"/>
+            BoxValue="{Binding intSboxValue}"
+            DecreaseCommand="{Binding intSboxDecreaseCommand}"
+            IncreaseCommand="{Binding intSboxIncreaseCommand}"/>
+
+        <sbox_string:StringSpinBox
+            Grid.Column="2"/>
     </Grid>
 </Window>

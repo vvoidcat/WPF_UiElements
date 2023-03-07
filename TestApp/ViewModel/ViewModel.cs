@@ -30,38 +30,38 @@ namespace Elements.TestApp {
         }
 
 
-        // SpinBox
+        // IntSpinBox
 
-        private const int sboxValueMin = -10;
-        private const int sboxValueMax = 10;
+        private const int intSboxValueMin = -10;
+        private const int intSboxValueMax = 10;
 
-        private int _sboxValue = 0;
-        public int sboxValue {
-            get { return _sboxValue; }
+        private int _intSboxValue = 0;
+        public int intSboxValue {
+            get { return _intSboxValue; }
             set {
-                if (value != _sboxValue && value >= sboxValueMin && value <= sboxValueMax) {
-                    _sboxValue = value;
-                    OnPropertyChanged(nameof(sboxValue));
+                if (value != _intSboxValue && value >= intSboxValueMin && value <= intSboxValueMax) {
+                    _intSboxValue = value;
+                    OnPropertyChanged(nameof(intSboxValue));
                 }
             }
         }
 
 
-        public ICommand sboxDecreaseCommand { get; private set; }
-        public ICommand sboxIncreaseCommand { get; private set; }
+        public ICommand intSboxDecreaseCommand { get; private set; }
+        public ICommand intSboxIncreaseCommand { get; private set; }
 
         private void DecreaseSboxValue(object sender) {
-            sboxValue -= 1;
+            intSboxValue -= 1;
         }
 
         private void IncreaseSboxValue(object sender) {
-            sboxValue += 1;
+            intSboxValue += 1;
         }
 
 
         public ViewModel() {
-            sboxDecreaseCommand = new RelayCommand<object>(DecreaseSboxValue);
-            sboxIncreaseCommand = new RelayCommand<object>(IncreaseSboxValue);
+            intSboxDecreaseCommand = new RelayCommand<object>(DecreaseSboxValue);
+            intSboxIncreaseCommand = new RelayCommand<object>(IncreaseSboxValue);
         }
     }
 }
