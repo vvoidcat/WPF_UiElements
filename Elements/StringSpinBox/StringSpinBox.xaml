@@ -28,6 +28,7 @@
         <Button
             Name="buttonLesser"
             Content="&lt;"
+            Command="{Binding ElementName=rootStringSpinbox, Path=DecreaseCommand}"
             Width="20"
             Height="20"
             Grid.Column="0"/>
@@ -38,7 +39,7 @@
             Grid.Column="1">
             <TextBlock
                 Name="textContent"
-                Text="aboba"
+                Text="{Binding ElementName=rootStringSpinbox, Path=BoxValue}"
                 HorizontalAlignment="Center"
                 VerticalAlignment="Center"/>
         </Grid>
@@ -46,6 +47,7 @@
         <Button
             Name="buttonGreater"
             Content="&gt;"
+            Command="{Binding ElementName=rootStringSpinbox, Path=IncreaseCommand}"
             Width="20"
             Height="20"
             Grid.Column="2"/>

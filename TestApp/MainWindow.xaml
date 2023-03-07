@@ -41,6 +41,9 @@
             IncreaseCommand="{Binding intSboxIncreaseCommand}"/>
 
         <sbox_string:StringSpinBox
+            BoxValue="{Binding chosenStringValue}"
+            DecreaseCommand="{Binding stringSboxDecreaseCommand}"
+            IncreaseCommand="{Binding stringSboxIncreaseCommand}"
             Grid.Column="2"/>
     </Grid>
 </Window>
