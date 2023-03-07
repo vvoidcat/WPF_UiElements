@@ -18,24 +18,23 @@
     
     <Grid 
         Height="{Binding ElementName=gridContent, Path=ActualHeight}"
-        Width="150">
+        Width="{Binding ElementName=rootStringSpinbox, Path=BoxWidth}">
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="20"/>
+            <ColumnDefinition Width="{Binding ElementName=buttonLesser, Path=Height}"/>
             <ColumnDefinition Width="*"/>
-            <ColumnDefinition Width="20"/>
+            <ColumnDefinition Width="{Binding ElementName=buttonGreater, Path=Height}"/>
         </Grid.ColumnDefinitions>
 
         <Button
             Name="buttonLesser"
             Content="&lt;"
             Command="{Binding ElementName=rootStringSpinbox, Path=DecreaseCommand}"
-            Width="20"
-            Height="20"
+            Style="{StaticResource styleButtons}"
             Grid.Column="0"/>
 
         <Grid
             Name="gridContent"
-            Height="30"
+            Height="{Binding ElementName=rootStringSpinbox, Path=BoxHeight}"
             Grid.Column="1">
             <TextBlock
                 Name="textContent"
@@ -48,8 +47,7 @@
             Name="buttonGreater"
             Content="&gt;"
             Command="{Binding ElementName=rootStringSpinbox, Path=IncreaseCommand}"
-            Width="20"
-            Height="20"
+            Style="{StaticResource styleButtons}"
             Grid.Column="2"/>
     </Grid>
 </UserControl>

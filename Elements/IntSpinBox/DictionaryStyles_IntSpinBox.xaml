@@ -14,5 +14,4 @@
         <Setter Property="ItemsControl.BorderThickness" Value="1"/>
         <Setter Property="ItemsControl.Height" Value="18"/>
     </Style>
-
 </ResourceDictionary>

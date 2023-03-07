@@ -41,6 +41,9 @@
             IncreaseCommand="{Binding intSboxIncreaseCommand}"/>
 
         <sbox_string:StringSpinBox
+            VerticalAlignment="Top"
+            BoxHeight="30"
+            BoxWidth="150"
             BoxValue="{Binding chosenStringValue}"
             DecreaseCommand="{Binding stringSboxDecreaseCommand}"
             IncreaseCommand="{Binding stringSboxIncreaseCommand}"
